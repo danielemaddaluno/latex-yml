@@ -1,0 +1,28 @@
+name: CompileLaTeX
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: mingc/latex
+
+    steps:
+      # Checkout of the repository
+      - uses: actions/checkout@v3
+
+      - name: Generate client dist folder
+        run: |
+          dockerlatex.sh pdflatex presentation.tex
+      
+      - name: Release pdf file
+      - uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "presentation.pdf"
+          tags: true
+          draft: true
