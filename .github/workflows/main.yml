@@ -37,5 +37,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           file: "presentation.pdf"
-          tags: true
+          tags: false
           draft: true
