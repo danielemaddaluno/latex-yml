@@ -51,7 +51,7 @@ jobs:
           pre-release-drop-tag: true
           draft-drop: true
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       # https://github.com/xresloader/upload-to-github-release
       - name: Release file .pdf
