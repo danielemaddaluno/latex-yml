@@ -37,11 +37,16 @@ jobs:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: Release pdf file
-        uses: xresloader/upload-to-github-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Release pdf file
+      #   uses: xresloader/upload-to-github-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     file: "presentation.pdf"
+      #     tags: false
+      #     draft: false
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
         with:
-          file: "presentation.pdf"
-          tags: false
-          draft: false
+          name: PDF
+          path: presentation.pdf
