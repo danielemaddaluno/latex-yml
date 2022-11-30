@@ -52,6 +52,15 @@ jobs:
           draft-drop: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete older release
+        uses: dev-drprasad/delete-older-releases@v0.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          keep_latest: 2
+          delete_tags: true
+          # delete_tag_pattern: beta # defaults to ""
       
       # https://github.com/xresloader/upload-to-github-release
       - name: Release file .pdf
