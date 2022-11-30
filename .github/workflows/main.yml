@@ -41,17 +41,17 @@ jobs:
 
       # https://github.com/marketplace/actions/delete-releases (release-keep-count will keep the latest 2 releases)
       - name: Delete older release
-        uses: sgpublic/delete-release-action@main
-          with:
-            release-drop: true
-            release-keep-count: 1
-            release-drop-tag: true
-            pre-release-drop: true
-            pre-release-keep-count: -1
-            pre-release-drop-tag: true
-            draft-drop: true
-          env:
-            GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        uses: sgpublic/delete-release-action@v1.0
+        with:
+          release-drop: true
+          release-keep-count: 1
+          release-drop-tag: true
+          pre-release-drop: true
+          pre-release-keep-count: -1
+          pre-release-drop-tag: true
+          draft-drop: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       
       # https://github.com/xresloader/upload-to-github-release
       - name: Release file .pdf
