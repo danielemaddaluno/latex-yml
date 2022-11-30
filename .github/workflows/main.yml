@@ -7,13 +7,14 @@ on:
     branches: [ main ]
 
 jobs:
-  # check "real-document" section: https://github.com/dante-ev/latex-action
   build_latex:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Pdflatex presentation \#1
+      
+      # https://github.com/dante-ev/latex-action check "real-document" section
+      - name: Pdflatex presentation #1
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
@@ -25,18 +26,20 @@ jobs:
       #     root_file: presentation.aux
       #     compiler: bibtex
       #     args: 
-      - name: Pdflatex presentation \#2
+      - name: Pdflatex presentation #2
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: Pdflatex presentation \#3
+      - name: Pdflatex presentation #3
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
+      
+      # https://github.com/xresloader/upload-to-github-release
       - name: Release file .pdf
         uses: xresloader/upload-to-github-release@v1
         env:
@@ -45,6 +48,8 @@ jobs:
           file: "presentation.pdf"
           tags: false
           draft: false
+
+      # https://github.com/marketplace/actions/delete-older-releases
       - name: Delete older release
         uses: dev-drprasad/delete-older-releases@v0.2.0
         env:
