@@ -11,42 +11,43 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Git repository
+      - name: Checkout repository
         uses: actions/checkout@v2
-      - name: pdflatex presentation
-        uses: dante-ev/latex-action@latest
+      - name: Pdflatex presentation \#1
+        uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
       # - name: bibtex presentation
-      #   uses: dante-ev/latex-action@latest
+      #   uses: dante-ev/latex-action@2021-A
       #   with:
       #     root_file: presentation.aux
       #     compiler: bibtex
       #     args: 
-      - name: pdflatex presentation
-        uses: dante-ev/latex-action@latest
+      - name: Pdflatex presentation \#2
+        uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: pdflatex presentation
-        uses: dante-ev/latex-action@latest
+      - name: Pdflatex presentation \#3
+        uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      # - name: Release pdf file
-      #   uses: xresloader/upload-to-github-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     file: "presentation.pdf"
-      #     tags: false
-      #     draft: false
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v3
+      - name: Release file .pdf
+        uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: PDF
-          path: presentation.pdf
+          file: "presentation.pdf"
+          tags: false
+          draft: false
+      - name: Delete older release
+        uses: dev-drprasad/delete-older-releases@v0.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        with:
+          keep_latest: 3
