@@ -44,4 +44,4 @@ jobs:
         with:
           file: "presentation.pdf"
           tags: false
-          draft: true
+          draft: false
