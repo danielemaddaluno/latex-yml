@@ -10,29 +10,29 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: 🛒 Checkout repository
         uses: actions/checkout@v2
       
       # https://github.com/dante-ev/latex-action check "real-document" section
-      - name: 📑 Pdflatex presentation n1
+      - name: 📜 Pdflatex presentation n1
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      # - name: 📑 bibtex presentation
+      # - name: 📜 bibtex presentation
       #   uses: dante-ev/latex-action@2021-A
       #   with:
       #     root_file: presentation.aux
       #     compiler: bibtex
       #     args: 
-      - name: 📑 Pdflatex presentation n2
+      - name: 📜 Pdflatex presentation n2
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: 📑 Pdflatex presentation n3
+      - name: 📜 Pdflatex presentation n3
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
