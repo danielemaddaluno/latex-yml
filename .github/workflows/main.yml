@@ -18,18 +18,18 @@ jobs:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: bibtex presentation
-        uses: dante-ev/latex-action@latest
-        with:
-          root_file: presentation.aux
-          compiler: bibtex
-          args: 
-      - name: pdflatex presentation
-        uses: dante-ev/latex-action@latest
-        with:
-          root_file: presentation.tex
-          compiler: pdflatex
-          args: -interaction=nonstopmode -shell-escape
+      # - name: bibtex presentation
+      #   uses: dante-ev/latex-action@latest
+      #   with:
+      #     root_file: presentation.aux
+      #     compiler: bibtex
+      #     args: 
+      # - name: pdflatex presentation
+      #   uses: dante-ev/latex-action@latest
+      #   with:
+      #     root_file: presentation.tex
+      #     compiler: pdflatex
+      #     args: -interaction=nonstopmode -shell-escape
       - name: Release pdf file
         uses: xresloader/upload-to-github-release@v1
         env:
