@@ -14,56 +14,43 @@ jobs:
         uses: actions/checkout@v2
       
       # https://github.com/dante-ev/latex-action check "real-document" section
-      - name: Pdflatex presentation #1
+      - name: 📑 Pdflatex presentation n1
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      # - name: bibtex presentation
+      # - name: 📑 bibtex presentation
       #   uses: dante-ev/latex-action@2021-A
       #   with:
       #     root_file: presentation.aux
       #     compiler: bibtex
       #     args: 
-      - name: Pdflatex presentation #2
+      - name: 📑 Pdflatex presentation n2
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: Pdflatex presentation #3
+      - name: 📑 Pdflatex presentation n3
         uses: dante-ev/latex-action@2021-A
         with:
           root_file: presentation.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
 
-      # https://github.com/marketplace/actions/delete-releases (release-keep-count will keep the latest 2 releases)
-      - name: Delete older release
-        uses: sgpublic/delete-release-action@v1.0
-        with:
-          release-drop: true
-          release-keep-count: 1
-          release-drop-tag: true
-          pre-release-drop: true
-          pre-release-keep-count: -1
-          pre-release-drop-tag: true
-          draft-drop: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Delete older release
+      # https://github.com/dev-drprasad/delete-older-releases
+      - name: 🗑️ Delete older release
         uses: dev-drprasad/delete-older-releases@v0.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           keep_latest: 2
           delete_tags: true
-          # delete_tag_pattern: beta # defaults to ""
+          #delete_tag_pattern: beta # defaults to ""
       
       # https://github.com/xresloader/upload-to-github-release
-      - name: Release file .pdf
+      - name: 🏷️ Release file .pdf
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
